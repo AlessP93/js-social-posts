@@ -56,9 +56,10 @@ const posts = [
     }
 ];
 
-
+// Milestone 1 
+// 
 const containerHtml = document.querySelector("#container");
-const postHtml = "";
+let postHtml = "";
 for (let i = 0; i < posts.length; i++) {
     let post = `
         <div class="post">
@@ -92,6 +93,28 @@ for (let i = 0; i < posts.length; i++) {
         </div>            
     </div>
     `;
-    let postHtml = post;
+    postHtml += post;
 };
-containerHtml.innerHTML(postHtml);
+
+containerHtml.innerHTML = postHtml;
+
+// Milestone 2: EVENTO
+// Creo una variabile che contine un blocco da html (.post-...) post footer
+const postList = document.querySelectorAll(".post__footer");
+// creo un ciclo 
+for (let i = 0; i < postList.length; i++) {
+    // 
+    const btn = postList[i].querySelector(".like-button");
+    const likePost = postList[i].querySelector("#like-counter-1");
+    // creo evento sul bottone facendo verde
+    btn.addEventListener("click",
+        function () {
+        if (btn.classList.contains("like-button--liked")) {
+            console.log("if ce ok");
+        } else {
+            btn.classList.add("like-button--liked")
+            
+        }
+    });
+};
+
