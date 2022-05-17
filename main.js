@@ -56,11 +56,13 @@ const posts = [
     }
 ];
 
-// Milestone 1 
-// 
+// credo una variabile e prendo dall html la classe container
 const containerHtml = document.querySelector("#container");
+// credo una variabile vuota per poi inserisci i post
 let postHtml = "";
+// creo un ciclo per la lunghezza dei post (5)
 for (let i = 0; i < posts.length; i++) {
+    // copio l html cosi apparirà da javascript e prendo le classi ${...}
     let post = `
         <div class="post">
         <div class="post__header">
@@ -81,7 +83,7 @@ for (let i = 0; i < posts.length; i++) {
         <div class="post__footer">
             <div class="likes js-likes">
                 <div class="likes__cta">
-                    <a class="like-button  js-like-button" href="#" data-postid="1">
+                    <a class="like-button  js-like-button" data-postid="1">
                         <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                         <span class="like-button__label">Mi Piace</span>
                     </a>
@@ -93,13 +95,13 @@ for (let i = 0; i < posts.length; i++) {
         </div>            
     </div>
     `;
+    // posthtlm = posthtml + post
     postHtml += post;
 };
 
 containerHtml.innerHTML = postHtml;
 
-// Milestone 2: EVENTO
-// Creo una variabile che contine un blocco da html (.post-...) post footer
+// Creo una variabile che contine il padre dove ci saranno i bottoni per creare l evento click
 const postList = document.querySelectorAll(".post__footer");
 // creo un ciclo 
 for (let i = 0; i < postList.length; i++) {
@@ -110,11 +112,14 @@ for (let i = 0; i < postList.length; i++) {
     btn.addEventListener("click",
         function () {
         if (btn.classList.contains("like-button--liked")) {
-            console.log("if ce ok");
+            btn.classList.remove("like-button--liked");
+            likePost.innerHTML = --likePost.innerHTML;
         } else {
-            btn.classList.add("like-button--liked")
+            btn.classList.add("like-button--liked");
+            likePost.innerHTML = ++likePost.innerHTML;
+            console.log("non ce");
             
-        }
+        } 
     });
 };
 
